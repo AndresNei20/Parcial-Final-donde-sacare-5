@@ -1,4 +1,6 @@
-class RecipeList extends HTMLElement {
+import { appState } from "../../store";
+
+export default class RecipeList extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode: "open"})
@@ -9,11 +11,34 @@ class RecipeList extends HTMLElement {
     }
 
     render() {
-        const FormScreen = this.ownerDocument.createElement('form-screen');
-        this.shadowRoot?.appendChild(FormScreen);
-        
-        const RecipeScreen = this.ownerDocument.createElement('recipe-screen');
-        this.shadowRoot?.appendChild(RecipeScreen);
+
+        appState.recetas.forEach((r)=>{
+
+
+             const oneRecipe = this.ownerDocument.createElement('section');
+
+
+             const nameRecipe = this.ownerDocument.createElement('h2');
+            nameRecipe.textContent = r.name
+
+             const ingredientsRecipe = this.ownerDocument.createElement('h3');
+             ingredientsRecipe.textContent = r.ingredientes
+
+             const instructionsRecipe = this.ownerDocument.createElement('p');
+             instructionsRecipe.textContent = r.instrucciones
+
+             const imageRecipe = this.ownerDocument.createElement('img');
+             imageRecipe.src = r.image
+
+             const btnBack = this.ownerDocument.createElement('button')
+             btnBack.textContent = "Addanother recipe"
+
+            oneRecipe.appendChild(nameRecipe)
+            oneRecipe.appendChild(ingredientsRecipe)
+            oneRecipe.appendChild(instructionsRecipe)
+            oneRecipe.appendChild(imageRecipe)
+             this.shadowRoot?.appendChild(oneRecipe);
+        })
     }
 }
 

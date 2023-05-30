@@ -70,13 +70,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/Screens/Recetas.ts":
+/*!********************************!*\
+  !*** ./src/Screens/Recetas.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ RecetasScreen)\n/* harmony export */ });\n/* harmony import */ var _components_export__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/export */ \"./src/components/export.ts\");\n\nclass RecetasScreen extends HTMLElement {\n    constructor() {\n        super();\n        this.attachShadow({ mode: \"open\" });\n    }\n    connectedCallback() {\n        this.render();\n    }\n    render() {\n        var _a;\n        const RecipeList = this.ownerDocument.createElement('recipe-list');\n        (_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.appendChild(RecipeList);\n    }\n}\ncustomElements.define('receta-screen', RecetasScreen);\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/Screens/Recetas.ts?");
+
+/***/ }),
+
+/***/ "./src/Screens/dashboard.ts":
+/*!**********************************!*\
+  !*** ./src/Screens/dashboard.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ DashboardScreen)\n/* harmony export */ });\n/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store */ \"./src/store/index.ts\");\n/* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/actions */ \"./src/store/actions.ts\");\n/* harmony import */ var _types_navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../types/navigation */ \"./src/types/navigation.ts\");\n\n\n\nclass DashboardScreen extends HTMLElement {\n    constructor() {\n        super();\n        this.attachShadow({ mode: \"open\" });\n    }\n    connectedCallback() {\n        this.render();\n    }\n    render() {\n        var _a;\n        if (this.shadowRoot)\n            this.shadowRoot.innerHTML = \"\";\n        const travelBtn = this.ownerDocument.createElement('button');\n        travelBtn.textContent = \"I want to create my recipe\";\n        travelBtn.addEventListener('click', () => {\n            console.log(\"hola funciono\");\n            (0,_store__WEBPACK_IMPORTED_MODULE_0__.dispatch)((0,_store_actions__WEBPACK_IMPORTED_MODULE_1__.navigate)(_types_navigation__WEBPACK_IMPORTED_MODULE_2__.Screens.DASHBOARD));\n        });\n        (_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.appendChild(travelBtn);\n    }\n}\ncustomElements.define('dashboard-screen', DashboardScreen);\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/Screens/dashboard.ts?");
+
+/***/ }),
+
 /***/ "./src/Screens/export.ts":
 /*!*******************************!*\
   !*** ./src/Screens/export.ts ***!
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"FormScreen\": () => (/* reexport safe */ _FormScreen__WEBPACK_IMPORTED_MODULE_0__[\"default\"])\n/* harmony export */ });\n/* harmony import */ var _FormScreen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormScreen */ \"./src/Screens/FormScreen.ts\");\n\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/Screens/export.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"DashboardScreen\": () => (/* reexport safe */ _dashboard__WEBPACK_IMPORTED_MODULE_2__[\"default\"]),\n/* harmony export */   \"FormScreen\": () => (/* reexport safe */ _FormScreen__WEBPACK_IMPORTED_MODULE_0__[\"default\"]),\n/* harmony export */   \"RecetasScreen\": () => (/* reexport safe */ _Recetas__WEBPACK_IMPORTED_MODULE_1__[\"default\"])\n/* harmony export */ });\n/* harmony import */ var _FormScreen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormScreen */ \"./src/Screens/FormScreen.ts\");\n/* harmony import */ var _Recetas__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Recetas */ \"./src/Screens/Recetas.ts\");\n/* harmony import */ var _dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dashboard */ \"./src/Screens/dashboard.ts\");\n\n\n\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/Screens/export.ts?");
 
 /***/ }),
 
@@ -90,13 +110,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/components/RecipeList/RecipeList.ts":
+/*!*************************************************!*\
+  !*** ./src/components/RecipeList/RecipeList.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ RecipeList)\n/* harmony export */ });\n/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store */ \"./src/store/index.ts\");\n\nclass RecipeList extends HTMLElement {\n    constructor() {\n        super();\n        this.attachShadow({ mode: \"open\" });\n    }\n    connectedCallback() {\n        this.render();\n    }\n    render() {\n        _store__WEBPACK_IMPORTED_MODULE_0__.appState.recetas.forEach((r) => {\n            var _a;\n            const oneRecipe = this.ownerDocument.createElement('section');\n            const nameRecipe = this.ownerDocument.createElement('h2');\n            nameRecipe.textContent = r.name;\n            const ingredientsRecipe = this.ownerDocument.createElement('h3');\n            ingredientsRecipe.textContent = r.ingredientes;\n            const instructionsRecipe = this.ownerDocument.createElement('p');\n            instructionsRecipe.textContent = r.instrucciones;\n            const imageRecipe = this.ownerDocument.createElement('img');\n            imageRecipe.src = r.image;\n            const btnBack = this.ownerDocument.createElement('button');\n            btnBack.textContent = \"Addanother recipe\";\n            oneRecipe.appendChild(nameRecipe);\n            oneRecipe.appendChild(ingredientsRecipe);\n            oneRecipe.appendChild(instructionsRecipe);\n            oneRecipe.appendChild(imageRecipe);\n            (_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.appendChild(oneRecipe);\n        });\n    }\n}\ncustomElements.define('recipe-list', RecipeList);\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/components/RecipeList/RecipeList.ts?");
+
+/***/ }),
+
 /***/ "./src/components/export.ts":
 /*!**********************************!*\
   !*** ./src/components/export.ts ***!
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Form\": () => (/* reexport safe */ _Form_Form__WEBPACK_IMPORTED_MODULE_0__[\"default\"])\n/* harmony export */ });\n/* harmony import */ var _Form_Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form/Form */ \"./src/components/Form/Form.ts\");\n\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/components/export.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Form\": () => (/* reexport safe */ _Form_Form__WEBPACK_IMPORTED_MODULE_0__[\"default\"]),\n/* harmony export */   \"RecipeList\": () => (/* reexport safe */ _RecipeList_RecipeList__WEBPACK_IMPORTED_MODULE_1__[\"default\"])\n/* harmony export */ });\n/* harmony import */ var _Form_Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form/Form */ \"./src/components/Form/Form.ts\");\n/* harmony import */ var _RecipeList_RecipeList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RecipeList/RecipeList */ \"./src/components/RecipeList/RecipeList.ts\");\n\n\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/components/export.ts?");
 
 /***/ }),
 
@@ -116,7 +146,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Screens_export__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Screens/export */ \"./src/Screens/export.ts\");\n\nclass AppContainer extends HTMLElement {\n    constructor() {\n        super();\n        this.attachShadow({ mode: \"open\" });\n    }\n    connectedCallback() {\n        this.render();\n    }\n    render() {\n        var _a, _b;\n        const FormScreen = this.ownerDocument.createElement('form-screen');\n        (_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.appendChild(FormScreen);\n        const RecipeScreen = this.ownerDocument.createElement('recipe-screen');\n        (_b = this.shadowRoot) === null || _b === void 0 ? void 0 : _b.appendChild(RecipeScreen);\n    }\n}\ncustomElements.define('app-container', AppContainer);\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Screens_export__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Screens/export */ \"./src/Screens/export.ts\");\n/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ \"./src/store/index.ts\");\n/* harmony import */ var _types_navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./types/navigation */ \"./src/types/navigation.ts\");\n\n\n\nclass AppContainer extends HTMLElement {\n    constructor() {\n        super();\n        this.attachShadow({ mode: \"open\" });\n    }\n    connectedCallback() {\n        this.render();\n    }\n    render() {\n        var _a, _b, _c;\n        if (this.shadowRoot)\n            this.shadowRoot.innerHTML = \"\";\n        switch (_store__WEBPACK_IMPORTED_MODULE_1__.appState.screen) {\n            case _types_navigation__WEBPACK_IMPORTED_MODULE_2__.Screens.DASHBOARD:\n                const dashboard = this.ownerDocument.createElement('dashboard-screen');\n                (_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.appendChild(dashboard);\n                break;\n            case _types_navigation__WEBPACK_IMPORTED_MODULE_2__.Screens.FORM:\n                const form = this.ownerDocument.createElement('form-screen');\n                (_b = this.shadowRoot) === null || _b === void 0 ? void 0 : _b.appendChild(form);\n                break;\n            case _types_navigation__WEBPACK_IMPORTED_MODULE_2__.Screens.RECIPES:\n                const recipes = this.ownerDocument.createElement('receta-screen');\n                (_c = this.shadowRoot) === null || _c === void 0 ? void 0 : _c.appendChild(recipes);\n                break;\n            default:\n                break;\n        }\n        /*         const form = this.ownerDocument.createElement('form-screen');\n                this.shadowRoot?.appendChild(form);\n                const RecipeScreen = this.ownerDocument.createElement('recipe-list');\n                this.shadowRoot?.appendChild(RecipeScreen); */\n    }\n}\ncustomElements.define('app-container', AppContainer);\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/index.ts?");
 
 /***/ }),
 
@@ -126,7 +156,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Scr
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"saveReceta\": () => (/* binding */ saveReceta)\n/* harmony export */ });\n/* harmony import */ var _types_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../types/store */ \"./src/types/store.ts\");\n/* harmony import */ var _utils_firebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/firebase */ \"./src/utils/firebase.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\n\nconst saveReceta = (receta) => __awaiter(void 0, void 0, void 0, function* () {\n    yield _utils_firebase__WEBPACK_IMPORTED_MODULE_1__[\"default\"].saveRecetaInDB(receta);\n    return {\n        action: _types_store__WEBPACK_IMPORTED_MODULE_0__.SomeActions.SAVE_RECETA,\n        payload: receta,\n    };\n});\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/store/actions.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"navigate\": () => (/* binding */ navigate),\n/* harmony export */   \"saveReceta\": () => (/* binding */ saveReceta)\n/* harmony export */ });\n/* harmony import */ var _types_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../types/store */ \"./src/types/store.ts\");\n/* harmony import */ var _utils_firebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/firebase */ \"./src/utils/firebase.ts\");\nvar __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\n\n\nconst saveReceta = (receta) => __awaiter(void 0, void 0, void 0, function* () {\n    yield _utils_firebase__WEBPACK_IMPORTED_MODULE_1__[\"default\"].saveRecetaInDB(receta);\n    return {\n        action: _types_store__WEBPACK_IMPORTED_MODULE_0__.SomeActions.SAVE_RECETA,\n        payload: receta,\n    };\n});\nconst navigate = (screen) => {\n    return {\n        action: _types_store__WEBPACK_IMPORTED_MODULE_0__.NavigationActions.NAVIGATE,\n        payload: screen,\n    };\n};\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/store/actions.ts?");
 
 /***/ }),
 
@@ -136,7 +166,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addObserver\": () => (/* binding */ addObserver),\n/* harmony export */   \"appState\": () => (/* binding */ appState),\n/* harmony export */   \"dispatch\": () => (/* binding */ dispatch)\n/* harmony export */ });\n/* harmony import */ var _utils_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/storage */ \"./src/utils/storage.ts\");\n/* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducer */ \"./src/store/reducer.ts\");\n\n\nconst emptyState = {\n    recetas: [],\n};\nlet appState = _utils_storage__WEBPACK_IMPORTED_MODULE_0__[\"default\"].get({\n    key: _utils_storage__WEBPACK_IMPORTED_MODULE_0__.PersistanceKeys.STORE,\n    defaultValue: emptyState,\n});\nlet observers = [];\nconst persistStore = (state) => _utils_storage__WEBPACK_IMPORTED_MODULE_0__[\"default\"].set({ key: _utils_storage__WEBPACK_IMPORTED_MODULE_0__.PersistanceKeys.STORE, value: state });\nconst notifyObservers = () => observers.forEach((o) => o.render());\nconst dispatch = (action) => {\n    const clone = JSON.parse(JSON.stringify(appState));\n    const newState = (0,_reducer__WEBPACK_IMPORTED_MODULE_1__.reducer)(action, clone);\n    appState = newState;\n    persistStore(newState);\n    notifyObservers();\n};\nconst addObserver = (ref) => {\n    observers = [...observers, ref];\n};\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/store/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addObserver\": () => (/* binding */ addObserver),\n/* harmony export */   \"appState\": () => (/* binding */ appState),\n/* harmony export */   \"dispatch\": () => (/* binding */ dispatch)\n/* harmony export */ });\n/* harmony import */ var _utils_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/storage */ \"./src/utils/storage.ts\");\n/* harmony import */ var _reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducer */ \"./src/store/reducer.ts\");\n/* harmony import */ var _types_navigation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../types/navigation */ \"./src/types/navigation.ts\");\n\n\n\nconst emptyState = {\n    recetas: [],\n    screen: _types_navigation__WEBPACK_IMPORTED_MODULE_2__.Screens.DASHBOARD\n};\nlet appState = _utils_storage__WEBPACK_IMPORTED_MODULE_0__[\"default\"].get({\n    key: _utils_storage__WEBPACK_IMPORTED_MODULE_0__.PersistanceKeys.STORE,\n    defaultValue: emptyState,\n});\nlet observers = [];\nconst persistStore = (state) => _utils_storage__WEBPACK_IMPORTED_MODULE_0__[\"default\"].set({ key: _utils_storage__WEBPACK_IMPORTED_MODULE_0__.PersistanceKeys.STORE, value: state });\nconst notifyObservers = () => observers.forEach((o) => o.render());\nconst dispatch = (action) => {\n    const clone = JSON.parse(JSON.stringify(appState));\n    const newState = (0,_reducer__WEBPACK_IMPORTED_MODULE_1__.reducer)(action, clone);\n    appState = newState;\n    persistStore(newState);\n    notifyObservers();\n};\nconst addObserver = (ref) => {\n    observers = [...observers, ref];\n};\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/store/index.ts?");
 
 /***/ }),
 
@@ -150,13 +180,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/types/navigation.ts":
+/*!*********************************!*\
+  !*** ./src/types/navigation.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Screens\": () => (/* binding */ Screens)\n/* harmony export */ });\nvar Screens;\n(function (Screens) {\n    Screens[\"FORM\"] = \"FORM\";\n    Screens[\"RECIPES\"] = \"RECIPES\";\n    Screens[\"DASHBOARD\"] = \"DASHBOARD\";\n})(Screens || (Screens = {}));\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/types/navigation.ts?");
+
+/***/ }),
+
 /***/ "./src/types/store.ts":
 /*!****************************!*\
   !*** ./src/types/store.ts ***!
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"SomeActions\": () => (/* binding */ SomeActions)\n/* harmony export */ });\nvar SomeActions;\n(function (SomeActions) {\n    SomeActions[\"SAVE_RECETA\"] = \"SAVE_RECETA\";\n})(SomeActions || (SomeActions = {}));\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/types/store.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"NavigationActions\": () => (/* binding */ NavigationActions),\n/* harmony export */   \"SomeActions\": () => (/* binding */ SomeActions)\n/* harmony export */ });\nvar NavigationActions;\n(function (NavigationActions) {\n    NavigationActions[\"NAVIGATE\"] = \"NAVIGATE\";\n})(NavigationActions || (NavigationActions = {}));\nvar SomeActions;\n(function (SomeActions) {\n    SomeActions[\"SAVE_RECETA\"] = \"SAVE_RECETA\";\n})(SomeActions || (SomeActions = {}));\n\n\n//# sourceURL=webpack://dca_scoffolding/./src/types/store.ts?");
 
 /***/ }),
 

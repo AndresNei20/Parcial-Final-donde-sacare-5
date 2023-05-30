@@ -1,10 +1,15 @@
+import { Screens } from "./navigation";
 import { Receta } from "./Receta";
 
 export type Observer = { render: () => void } & HTMLElement;
 
 export type AppState = {
-  recetas: Receta [];
+  recetas: Receta [],
+  screen: Screens
 };
+export enum NavigationActions{
+  "NAVIGATE" = "NAVIGATE"
+}
 
 export enum SomeActions {
   "SAVE_RECETA" = "SAVE_RECETA",
@@ -15,4 +20,9 @@ export interface SaveResetaAction {
   payload: Receta;
 }
 
-export type Actions = SaveResetaAction;
+export interface NavigateAction {
+  action: NavigationActions.NAVIGATE;
+  payload: Screens;
+}
+
+export type Actions = SaveResetaAction | NavigateAction;
