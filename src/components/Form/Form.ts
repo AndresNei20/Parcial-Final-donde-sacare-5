@@ -1,5 +1,6 @@
 import { dispatch } from "../../store";
-import { saveReceta } from "../../store/actions";
+import { navigate, saveReceta } from "../../store/actions";
+import { Screens } from "../../types/navigation";
 import { Receta } from "../../types/Receta";
 import FormStyle from '../Form/FormStyle.css'
 
@@ -73,6 +74,9 @@ export default class Form extends HTMLElement {
 
         const btnOut = this.ownerDocument.createElement('button');
         btnOut.textContent = "Watch another recipes"
+        btnOut.addEventListener('click', () => {
+            dispatch(navigate(Screens.RECIPES))
+        })
 
 
 

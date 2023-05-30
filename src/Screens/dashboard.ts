@@ -19,7 +19,7 @@ export default class DashboardScreen extends HTMLElement {
         travelBtn.textContent = "I want to create my recipe"
         travelBtn.addEventListener('click', () => {
             console.log("hola funciono")
-            dispatch(navigate(Screens.DASHBOARD))
+            dispatch(navigate(Screens.FORM))
         })
         this.shadowRoot?.appendChild(travelBtn);
     }

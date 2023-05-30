@@ -1,4 +1,6 @@
-import { appState } from "../../store";
+import { appState, dispatch } from "../../store";
+import { navigate } from "../../store/actions";
+import { Screens } from "../../types/navigation";
 
 export default class RecipeList extends HTMLElement {
     constructor(){
@@ -32,6 +34,10 @@ export default class RecipeList extends HTMLElement {
 
              const btnBack = this.ownerDocument.createElement('button')
              btnBack.textContent = "Addanother recipe"
+             btnBack.addEventListener('click', () => {
+                dispatch(navigate(Screens.FORM))
+            })
+
 
             oneRecipe.appendChild(nameRecipe)
             oneRecipe.appendChild(ingredientsRecipe)
